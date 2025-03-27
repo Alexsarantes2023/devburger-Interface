@@ -3,16 +3,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '../../assets/logo.svg';
-import { Container, LeftContainer, RightContainer, Title, Form, InputContainer } from './styles';
+import { Container, LeftContainer, RightContainer, Title, Form, InputContainer, Link, } from './styles';
 
 import { Button } from '../../components/Button';
 import { api } from '../../services/api';
 
 
 export function Register() {
-
+  const navigate = useNavigate();
 //schemas de validação com yup onde temos as nossas informaçoes dos nossos campos de input
   const schema = yup.object({
     name: yup.string().required('O nome é Obrigatório'),
@@ -47,7 +48,10 @@ export function Register() {
 		);
 
 		if (status === 200 || status === 201) {
-			toast.success('Conta criado com sucesso!');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+      toast.success('Conta criado com sucesso!');
 		} else if (status === 400) {
 			toast.error('Email já cadastrado! Faça o login para con');
 		} else {
@@ -100,7 +104,7 @@ export function Register() {
           </InputContainer>
           <Button type="submit">Criar Conta</Button>
         </Form>
-        <p>Já possui conta? <a>Clique aqui.</a></p>
+        <p>Já possui conta? <Link to="/login">Clique aqui.</Link></p>
         
       </RightContainer>
     </Container>

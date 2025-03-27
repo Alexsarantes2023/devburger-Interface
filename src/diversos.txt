@@ -1,2 +1,20 @@
 instalando dependencia que informa o react o transporte de informação no caso em button children
 yarn add prop-types
+
+
+
+terminar um serviço na porta 3001 pelo cmd windows
+indentificar o processo com o comando abaixo
+netstat -ano | findstr :3001
+
+finalizar o processo identificado
+taskkill /F /PID PID
+
+exemplo: 
+taskkill /F /PID 1234
+
+
+mostrar tudo
+netstat -a -n -o
+
+

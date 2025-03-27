@@ -1,0 +1,2 @@
+instalando dependencia que informa o react o transporte de informação no caso em button children
+yarn add prop-types

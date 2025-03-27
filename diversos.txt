@@ -1,0 +1,21 @@
+instalando dependencia que informa o react o transporte de informação no caso em button children
+yarn add prop-types
+
+falta instalar e importar as bibliotecas do hookform e yup
+
+yarn add axios       da aula 12
+
+
+instalando axios aula 12
+yarn add axios
+
+
+instalar react-toastify  aula 14  retarnando erros de comunicaçao com api
+yarn add react-toastify
+
+importando para o styles global o stiles do toastify
+import 'react-toastify/dist/ReactToastify.css';
+
+
+aula 15 instalar 
+yarn add react-router-dom

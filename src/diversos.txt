@@ -18,3 +18,7 @@ mostrar tudo
 netstat -a -n -o
 
 
+react-multi-carousel aula 22
+yarn add react-multi-carousel
+
+

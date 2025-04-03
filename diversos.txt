@@ -1,3 +1,5 @@
+https://www.figma.com/design/iggbPQzl4BsDC0gKKifcwG/DevBurger?node-id=0-1
+
 instalando dependencia que informa o react o transporte de informação no caso em button children
 yarn add prop-types
 
@@ -19,3 +21,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 aula 15 instalar 
 yarn add react-router-dom
+
+
+aula 21 criando a tela de home
+https://www.figma.com/design/iggbPQzl4BsDC0gKKifcwG/DevBurger?node-id=0-1
+
+https://www.figma.com/design/iggbPQzl4BsDC0gKKifcwG/DevBurger?node-id=0-1&p=f&t=S2F5Qa7Z79jcKjWI-0
+

@@ -20,13 +20,10 @@ export const Container = styled.div`
     top: 10px;
 }
 .react-multiple-carousel__arrow--right {
-    
     top: 10px;
 }
-
-
-
 `;
+
 
 export const Title = styled.h2`
     font-size: 32px;

@@ -3,64 +3,151 @@ import { Container, Banner, CategoryMenu, ProductsContainer, CategoryButton } fr
 import { api } from '../../services/api';
 import { formatPrice } from '../../utils/formatPrice';
 import { CardProduct } from '../../components/CardProduct';
+import { useNavigate } from 'react-router-dom';
 
 export function Menu() {
+    const [activeCategory, setActiveCategory] = useState(0); // Corrigido o erro de digitação
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-            async function loadCategories() {
-                const { data } = await api.get('/categories');
+        async function loadCategories() {
+            const { data } = await api.get('/categories');
 
-                const newCategories = [{ id: 0, name: 'Todas' }, ...data];
-    
-                setCategories(newCategories);
-            }
-    
-        
+            const newCategories = [{ id: 0, name: 'Todas' }, ...data];
 
-            async function loadProducts() {
-                    const { data } = await api.get('/products');
-        
-                const newProducts = data.map((product) => ({
-                        currencyValue: formatPrice(product.price),
-                        ...product,
-                    })); // realiza os filtros dos produtos verdadeiros
-        
-                    setProducts(newProducts);
-            }
-        
-            loadCategories();
-            loadProducts();
-            
-        }, []);
+            setCategories(newCategories);
+        }
+
+        async function loadProducts() {
+            const { data } = await api.get('/products');
+
+            const newProducts = data.map((product) => ({
+                currencyValue: formatPrice(product.price),
+                ...product,
+            })); // Realiza os filtros dos produtos verdadeiros
+
+            setProducts(newProducts);
+        }
+
+        loadCategories();
+        loadProducts();
+    }, []);
+
+    useEffect(() => {
+        if (activeCategory === 0) {
+            setFilteredProducts(products);
+        } else {
+            const newFilteredProducts = products.filter(
+                (product) => product.category_id === activeCategory,
+            );
+            setFilteredProducts(newFilteredProducts);
+        }
+
+    }, [products, activeCategory]);
+    
 
     return (
         <Container>
-
             <Banner>
                 <h1>O MELHOR
                     <br />
                     HAMBURGER
                     <br />
                     ESTÁ AQUI!
-                    <span>Esse cardápio está irresistivel!</span>
+                    <span>Esse cardápio está irresistível!</span>
                 </h1>
             </Banner>
 
             <CategoryMenu>
-                {categories.map((category) =>
-                    <CategoryButton key={category.id}>{category.name}</CategoryButton>
-                )}
+                {categories.map((category) => (
+                    <CategoryButton
+                        key={category.id}
+                        $isActiveCategory={category.id === activeCategory}
+                        onClick={() => {
+
+                            navigate({
+                                pathname: '/cardapio',
+                                search: `?categoria=${category.id}`,
+                            }, {
+                                replace: true,
+                            },
+                            );
+                            setActiveCategory(category.id);
+                        }}
+                    >
+                        {category.name}
+                    </CategoryButton>
+                ))}
             </CategoryMenu>
 
             <ProductsContainer>
-                {products.map((product) => (
+                {filteredProducts.map((product) => (
                     <CardProduct products={product} key={product.id} />
                 ))}
-            </ProductsContainer>    
-            
-
+            </ProductsContainer>
         </Container>
     );
 }
+
+
+
+
+
+// export function Menu() {
+//     const [categories, setCategories] = useState([]);
+//     const [products, setProducts] = useState([]);
+
+//     const navigate = useNavigate();
+
+//     useEffect(() => {
+//             async function loadCategories() {
+//                 const { data } = await api.get('/categories');
+
+//                 const newCategories = [{ id: 0, name: 'Todas' }, ...data];
+    
+//                 setCategories(newCategories);
+//             }
+    
+        
+
+//             async function loadProducts() {
+//                     const { data } = await api.get('/products');
+        
+//                 const newProducts = data.map((product) => ({
+//                         currencyValue: formatPrice(product.price),
+//                         ...product,
+//                     })); // realiza os filtros dos produtos verdadeiros
+        
+//                     setProducts(newProducts);
+//             }
+        
+//             loadCategories();
+//             loadProducts();
+            
+//         }, []);
+
+//     return (
+//         <Container>
+
+//             <Banner>
+//                 <h1>O MELHOR
+//                     <br />
+//                     HAMBURGER
+//                     <br />
+//                     ESTÁ AQUI!
+//                     <span>Esse cardápio está irresistivel!</span>
+//                 </h1>
+//             </Banner>
+
+
+
+//                
+            
+
+//         </Container>
+//     );
+// }

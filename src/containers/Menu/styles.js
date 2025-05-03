@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import BannerHamburger from '../../assets/banner-hamburger.svg';
 import Background from '../../assets/background.svg';
-
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     width: 100%;
@@ -14,6 +14,8 @@ export const Container = styled.div`
         rgba(255, 255, 255, 0.6)
     ),
     url('${Background}');
+
+    
 `;
 
 
@@ -78,4 +80,25 @@ export const ProductsContainer = styled.div`
     justify-content: center;
     max-width: 1280px;
     margin: 50px auto;
+
+    & .retornar {
+        text-align: center;
+        color: #9758a6;
+        font-size: 20px;
+        font-weight: 700;
+    }
+`;
+   
+
+
+export const Links = styled(Link)`
+    text-decoration: none;
+    color:  #9758a6;
+    font-size: 20px;
+    font-weight: 700;
+
+    &:hover {
+        color:  #cf3057;
+    }
+    
 `;

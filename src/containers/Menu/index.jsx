@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Container, Banner, CategoryMenu, ProductsContainer, CategoryButton } from './styles';
+import { Container, Banner, CategoryMenu, ProductsContainer, CategoryButton, Links} from './styles';
 import { api } from '../../services/api';
 import { formatPrice } from '../../utils/formatPrice';
-import { CardProduct } from '../../components/CardProduct';
+import { CardProduct } from '../../components';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export function Menu() {
@@ -25,7 +25,6 @@ export function Menu() {
         }
         return 0;
     });
-        
 
     useEffect(() => {
         async function loadCategories() {
@@ -102,8 +101,11 @@ export function Menu() {
                 {filteredProducts.map((product) => (
                     <CardProduct products={product} key={product.id} />
                 ))}
+                <p class='retornar'>Retornar a Home? <Links to="/">Clique aqui.</Links></p>
             </ProductsContainer>
+            
         </Container>
+        
     );
 }
 

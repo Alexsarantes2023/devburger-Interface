@@ -1,18 +1,23 @@
-import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import { toast } from 'react-toastify';
+import * as yup from "yup";
+
 
 import Logo from '../../assets/logo.svg';
-import { Container, LeftContainer, RightContainer, Title, Form, InputContainer, Link, } from './styles';
-
 import { Button } from '../../components/Button';
 import { api } from '../../services/api.js';
+import { Container, LeftContainer, RightContainer, Title, Form, InputContainer, Link, } from './styles.js';
+
+
+
+import { useUser } from "../../hooks/UserContext.jsx";
 
 
 export function Login() {
   const navigate = useNavigate();
+  const { putUserData } = useUser();
 //schemas de validação com yup onde temos as nossas informaçoes dos nossos campos de input
   const schema = yup.object({
     email: yup.string().email('Digite um e-mail válido').required('O email é obrigatório'),
@@ -22,15 +27,15 @@ export function Login() {
   //yupresolver foi importado ajuda a validar os compos no nosso schema
   //desestruturação criando tres variaveis chamadas register, handleSubmit, formState
   //register estou registrando meus inputs, handleSubmit lida com a submissao do formulario, 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)  
+  const { register, handleSubmit, formState: { errors }, } = useForm({
+    resolver: yupResolver(schema),
   });
   //toda vez que eu click no botao recebemos as informaçoes de onSubmit em data
   //temos abaixo uma aeron function
   // const onSubmit = data => console.log(data);
   //enviando de submit para data para a api comunicando
-  const onSubmit = async data => {
-    const {data: { token },}  = await toast.promise(
+  const onSubmit = async (data) => {
+    const { data: userData }  = await toast.promise(
       api.post('/session', {
         email: data.email,
         password: data.password,
@@ -48,7 +53,8 @@ export function Login() {
         },
     );
       
-    localStorage.setItem('token', token);
+    putUserData(userData);
+    // localStorage.setItem('token', token);
   };
 
   return (

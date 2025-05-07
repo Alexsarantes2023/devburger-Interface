@@ -101,7 +101,7 @@ export function Menu() {
                 {filteredProducts.map((product) => (
                     <CardProduct products={product} key={product.id} />
                 ))}
-                <p class='retornar'>Retornar a Home? <Links to="/">Clique aqui.</Links></p>
+                <p className='retornar'>Retornar a Home? <Links to="/">Clique aqui.</Links></p>
             </ProductsContainer>
             
         </Container>

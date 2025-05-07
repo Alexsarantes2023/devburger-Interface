@@ -13,7 +13,7 @@ export const Container = styled.div`
         rgba(255, 255, 255, 0.6),
         rgba(255, 255, 255, 0.6)
     ),
-    url('${Background}');
+    url(${Background});
 
     
 `;
@@ -27,7 +27,7 @@ export const Banner = styled.div`
     width: 100%;
     position: relative;
 
-    background: url('${BannerHamburger}') no-repeat;
+    background: url(${BannerHamburger}) no-repeat;
     background-color: #1f1f1f;
     background-position: center;
     background-position: center;

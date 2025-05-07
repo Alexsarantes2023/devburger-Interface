@@ -22,3 +22,8 @@ react-multi-carousel aula 22
 yarn add react-multi-carousel
 
 
+categories carrousel css
+ {/*background: url('${(props) => props.imageUrl}');*/}
+
+ offers carrousel css
+ {/*background: url('${(props) => props.imageUrl}');*/}

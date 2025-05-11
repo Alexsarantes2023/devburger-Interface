@@ -9,7 +9,7 @@ export const Container = styled.div`
     justify-content: center;
 
     p {
-        color: #fff;
+        color: ${(props) => props.theme.white};
         font-size: 14px;
         font-weight: lighter;
     }

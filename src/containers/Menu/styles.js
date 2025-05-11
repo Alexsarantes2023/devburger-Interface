@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: ${(props) => props.theme.secondWhite};
 
     background: linear-gradient(
         rgba(255, 255, 255, 0.6),
@@ -28,7 +28,7 @@ export const Banner = styled.div`
     position: relative;
 
     background: url(${BannerHamburger}) no-repeat;
-    background-color: #1f1f1f;
+    background-color: ${(props) => props.theme.mainBlack};
     background-position: center;
     background-position: center;
     background-size: cover;
@@ -37,7 +37,7 @@ export const Banner = styled.div`
         font-family: 'Road Rage', sans-serif;
         font-size: 80px;
         line-height: 65px;
-        color: #ffffff;
+        color: ${(props) => props.theme.white}fff;
         position: absolute;
 
         right: 20%;
@@ -45,7 +45,7 @@ export const Banner = styled.div`
 
         span {
             display: block;
-            color: #fff;
+            color: ${(props) => props.theme.white};
             font-size: 20px;
         }
     }
@@ -83,7 +83,7 @@ export const ProductsContainer = styled.div`
 
     & .retornar {
         text-align: center;
-        color: #9758a6;
+        color: ${(props) => props.theme.purple};
         font-size: 20px;
         font-weight: 700;
     }
@@ -93,12 +93,12 @@ export const ProductsContainer = styled.div`
 
 export const Links = styled(Link)`
     text-decoration: none;
-    color:  #9758a6;
+    color:  ${(props) => props.theme.purple};
     font-size: 20px;
     font-weight: 700;
 
     &:hover {
-        color:  #cf3057;
+        color:  ${(props) => props.theme.darkRed};
     }
     
 `;

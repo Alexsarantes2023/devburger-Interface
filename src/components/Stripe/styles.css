@@ -46,7 +46,7 @@
  .button {
    background: #0055DE;
    font-family: Arial, sans-serif;
-   color: #ffffff;
+   color: ${(props) => props.theme.white}fff;
    border-radius: 4px;
    border: 0;
    padding: 12px 16px;
@@ -79,7 +79,7 @@
  }
 
  .spinner {
-   color: #ffffff;
+   color: ${(props) => props.theme.white}fff;
    font-size: 22px;
    text-indent: -99999px;
    margin: 0px auto;
@@ -205,7 +205,7 @@
   text-decoration: none;
   text-align: center;
   background: #0055DE;
-  color: #ffffff;
+  color: ${(props) => props.theme.white}fff;
   border-radius: 4px;
   border: 0;
   padding: 12px 16px;

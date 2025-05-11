@@ -27,3 +27,18 @@ categories carrousel css
 
  offers carrousel css
  {/*background: url('${(props) => props.imageUrl}');*/}
+
+ aula 56   instalando mui.com material
+ yarn add @mui/material @emotion/react @emotion/styled
+
+
+https://mui.com/material-ui/react-table/
+
+
+mui materials icons instalação
+yarn add @mui/icons-material @mui/material @emotion/styled @emotion/react
+
+instalação do select
+react-select.com/home
+
+yarn add react-select

@@ -43,14 +43,14 @@ export function Row({ row, setOrders, orders }) {
     <>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
-          <IconButton
+         <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => setOpen(!open)}
-            isLoading={loading}
+            // isloading={loading}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
+        </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
           {row.orderId}
@@ -58,12 +58,14 @@ export function Row({ row, setOrders, orders }) {
         <TableCell>{row.name}</TableCell>
         <TableCell>{formatDate(row.date)}</TableCell>
         <TableCell>
-          <SelectStatus options={orderStatusOptions.filter((status) => status.id !== 0)}
+          <SelectStatus
+            options={orderStatusOptions.filter((status) => status.id !== 0)}
             placeholder="Status"
             defaultValue={orderStatusOptions.find((status) => status.value === row.status || null,
             )}
             onChange={(status) => newStatusOrder(row.orderId, status.value)}
             isLoading={loading}
+            menuPortalTarget={document.body}
           />
         </TableCell>
       </TableRow>
@@ -80,7 +82,7 @@ export function Row({ row, setOrders, orders }) {
                     <TableCell>Quantidade</TableCell>
                     <TableCell>Produto</TableCell>
                     <TableCell>Categoria</TableCell>
-                    <TableCell>Imagem do Produto</TableCell>
+                    <TableCell></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -121,7 +123,6 @@ Row.propTypes = {
         price: PropTypes.number.isRequired,
         quantity: PropTypes.number.isRequired,
         url: PropTypes.string.isRequired,
-
       }),
     ).isRequired,
     status: PropTypes.string.isRequired,
